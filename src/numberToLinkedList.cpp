@@ -10,15 +10,35 @@ ERROR CASES:
 
 NOTES: For negative numbers ignore negative sign.
 */
-
+void insert(int);
 #include <stdio.h>
-#include <malloc.h>
-
+#include <stdlib.h>
 struct node {
 	int num;
 	struct node *next;
-};
+}*head,*temp;
 
 struct node * numberToLinkedList(int N) {
-	return NULL;
+	int x;
+	head = NULL;
+	N = abs(N);
+	if (N==0)
+	{
+		insert(N);
+	}
+	while (N > 0)
+	{
+			x = N % 10;
+			insert(x);
+			N = N / 10;
+	}
+		return head;
+}
+
+void insert(int x)
+{
+	temp=(struct node *)malloc(sizeof(struct node));
+	temp->num = x;
+	temp->next = head;
+	head = temp;
 }

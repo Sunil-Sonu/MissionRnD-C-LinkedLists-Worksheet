@@ -19,8 +19,25 @@ NOTES: Only 0,1,2, will be in sll nodes
 struct node {
 	int data;
 	struct node *next;
-};
+}*temp2 = NULL, *temp1 = NULL;
 
 void sll_012_sort(struct node *head){
-	
+	int t;
+	temp2 = head;
+	temp1 = temp2->next;
+	while (temp2->next!= NULL)
+	{
+		while (temp1!=NULL)
+		{
+			if ((temp2->data) > (temp1->data))
+			{
+				t = temp2->data;
+				temp2->data = temp1->data;
+				temp1->data = t;
+			}
+			temp1 = temp1->next;
+		}
+		temp2 = temp2->next;
+		temp1 = temp2->next; 
+	}
 }

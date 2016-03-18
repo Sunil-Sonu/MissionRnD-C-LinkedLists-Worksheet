@@ -11,16 +11,38 @@ ERROR CASES:
 
 NOTES: Only Postive Numbers
 */
-
+int toInt(char *);
 #include <stdio.h>
 #include <malloc.h>
-
 struct node {
 	int digit1;
 	int digit2;
 	struct node *next;
-};
+}*n=NULL;
 
 int convert_sll_2digit_to_int(struct node *head){
-	return 0;
+	char *str; int i=0,x,j,res=0;
+	str = (char*)malloc(sizeof(char));
+	str[i] = '\0';
+	n = head;
+	while (n != NULL)
+	{
+		x = n->digit1;
+		x = n->digit2;
+		str[i] =n->digit1+'0';
+		str[i + 1] =n->digit2+'0';
+		i=i + 2;
+		n = n->next;
+	}
+	str[i] = '\0';
+	res=toInt(str);
+	return res;
+}
+int toInt(char *str)
+{
+	int c = 0,n=0;
+	for (c = 0; str[c] != '\0'; c++) {
+		n = n * 10 + str[c] - '0';
+	}
+	return n;
 }
